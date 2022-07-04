@@ -10,7 +10,7 @@ class FileCache implements CacheInterface
 
     public function set(string $key, $value): void
     {
-        if (!PathUtils::isFilepath($key))
+        if (!PathUtils::isValidKey($key))
             throw new Exception('Key name is invalid');
 
         $file_path = sprintf(self::CACHE_FILE_PATH, $key);

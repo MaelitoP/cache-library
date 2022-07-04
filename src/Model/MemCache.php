@@ -10,7 +10,7 @@ class MemCache implements CacheInterface
 
     function set(string $key, $value): void
     {
-        if (!PathUtils::isFilepath($key))
+        if (!PathUtils::isValidKey($key))
             throw new Exception('Key name is invalid');
         self::$memory[$key] = $value;
     }
