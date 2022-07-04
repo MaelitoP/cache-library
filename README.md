@@ -1,2 +1,4 @@
 # cache-library
-### Exo 2 for @Mention
+Technical test for @Mention.
+
+Made with ❤️ by Maël LE PETIT.
