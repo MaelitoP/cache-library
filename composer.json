@@ -1,0 +1,23 @@
+{
+    "name": "mention/cache",
+    "description": "Cache Library",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Mention\\Cache\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maël LE PETIT",
+            "email": "maelito.contact@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
