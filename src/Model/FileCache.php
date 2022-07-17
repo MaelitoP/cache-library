@@ -1,35 +1,48 @@
 <?php
 namespace Mention\Cache\Model;
 
-use Mention\Cache\Utils\PathUtils;
+use Mention\Cache\Utils\Hash;
 use Exception;
 
-class FileCache implements CacheInterface
+class FileCache implements Cache
 {
     private const CACHE_FILE_PATH = '/tmp/%s.txt';
 
     public function set(string $key, $value): void
     {
-        if (!PathUtils::isValidKey($key))
-            throw new Exception('Key name is invalid');
-
-        $file_path = sprintf(self::CACHE_FILE_PATH, $key);
-        file_put_contents($file_path, serialize($value));
+        file_put_contents($this->getFilePath($key), serialize($value));
     }
 
     public function get(string $key): mixed
     {
-        $file_path = sprintf(self::CACHE_FILE_PATH, $key);
-        if (!file_exists($file_path) || !is_readable($file_path))
-            return NULL;
+        $filePath = $this->getFilePath($key);
+        $value = $this->getCacheValue($filePath);
 
-        $file_contents = file_get_contents($file_path);
-        $value = unserialize($file_contents);
+        if (!$this->isReadable($value))
+            unlink($filePath);
 
-        if (!$value) {
-            unlink($file_path);
-            return NULL;
-        }
         return $value;
+    }
+
+    private function getFilePath(string $key): string
+    {
+        $fileName = Hash::getMD5Key($key);
+        return sprintf(self::CACHE_FILE_PATH, $fileName);
+    }
+
+    private function getCacheValue(string $filePath): mixed
+    {
+        if (!file_exists($filePath) || !is_readable($filePath))
+            return NULL;
+
+        $fileContents = file_get_contents($filePath);
+        return unserialize($fileContents);
+    }
+
+    private function isReadable(mixed $value): bool
+    {
+        if ($value)
+            return true;
+        return false;
     }
 }
