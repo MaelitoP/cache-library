@@ -8,12 +8,12 @@ class MemCache implements Cache
 {
     private static array $memory = [];
 
-    function set(string $key, $value): void
+    public function set(string $key, $value): void
     {
         self::$memory[Hash::getMD5Key($key)] = $value;
     }
 
-    function get(string $key): mixed
+    public function get(string $key): mixed
     {
         return self::$memory[Hash::getMD5Key($key)] ?? null;
     }
