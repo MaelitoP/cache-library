@@ -38,8 +38,6 @@ class File implements CacheInterface
 
     private function isReadable(mixed $value): bool
     {
-        if ($value)
-            return true;
-        return false;
+        return $value ? true : false;
     }
 }
