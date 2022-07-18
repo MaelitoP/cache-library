@@ -2,13 +2,13 @@
 namespace Mention\Cache\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Mention\Cache\Model\FileCache;
+use Mention\Cache\File;
 
-final class FileCacheTest extends TestCase
+final class FileTest extends TestCase
 {
-    public function testFileCache()
+    public function testFile()
     {
-        $fileCache = new FileCache();
+        $fileCache = new File();
 
         $fileCache->set('integer', 1234);
         $this->assertEquals(1234, $fileCache->get('integer'), "save and get Integer to file cache");

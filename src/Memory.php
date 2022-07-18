@@ -1,10 +1,7 @@
 <?php
-namespace Mention\Cache\Model;
+namespace Mention\Cache;
 
-use Mention\Cache\Utils\Hash;
-use Exception;
-
-class MemCache implements Cache
+class Memory implements CacheInterface
 {
     private static array $memory = [];
 

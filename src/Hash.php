@@ -1,5 +1,5 @@
 <?php
-namespace Mention\Cache\Utils;
+namespace Mention\Cache;
 
 class Hash
 {

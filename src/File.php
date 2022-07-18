@@ -1,10 +1,7 @@
 <?php
-namespace Mention\Cache\Model;
+namespace Mention\Cache;
 
-use Mention\Cache\Utils\Hash;
-use Exception;
-
-class FileCache implements Cache
+class File implements CacheInterface
 {
     private const CACHE_FILE_PATH = '/tmp/%s.txt';
 

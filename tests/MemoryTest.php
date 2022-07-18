@@ -2,13 +2,13 @@
 namespace Mention\Cache\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Mention\Cache\Model\MemCache;
+use Mention\Cache\Memory;
 
-final class MemCacheTest extends TestCase
+final class MemoryTest extends TestCase
 {
-    public function testMemCache()
+    public function testMemory()
     {
-        $memCache = new MemCache();
+        $memCache = new Memory();
 
         $memCache->set('integer', 1234);
         $this->assertEquals(1234, $memCache->get('integer'), "save and get Integer to memory cache");

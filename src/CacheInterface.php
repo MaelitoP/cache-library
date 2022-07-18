@@ -1,7 +1,7 @@
 <?php
-namespace Mention\Cache\Model;
+namespace Mention\Cache;
 
-interface Cache
+interface CacheInterface
 {
     /**
      * Store data in cache
