@@ -1,7 +1,7 @@
 <?php
-namespace Mention\Cache;
+namespace Mention\Cache\Utility;
 
-class Hash
+class HashUtility
 {
     public static function getMD5Key(string $key): string
     {

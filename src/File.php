@@ -1,13 +1,16 @@
 <?php
 namespace Mention\Cache;
 
+use Mention\Cache\Utility\HashUtility;
+use Mention\Cache\Utility\Serializable;
+
 class File implements CacheInterface
 {
     private const CACHE_FILE_PATH = '/tmp/%s.txt';
 
     public function set(string $key, $value): void
     {
-        file_put_contents($this->getFilePath($key), serialize($value));
+        file_put_contents($this->getFilePath($key), Serializable::encode($value));
     }
 
     public function get(string $key): mixed
@@ -23,7 +26,7 @@ class File implements CacheInterface
 
     private function getFilePath(string $key): string
     {
-        $fileName = Hash::getMD5Key($key);
+        $fileName = HashUtility::getMD5Key($key);
         return sprintf(self::CACHE_FILE_PATH, $fileName);
     }
 
@@ -32,8 +35,8 @@ class File implements CacheInterface
         if (!file_exists($filePath) || !is_readable($filePath))
             return NULL;
 
-        $fileContents = file_get_contents($filePath);
-        return unserialize($fileContents);
+        $fileContent = file_get_contents($filePath);
+        return Serializable::encode($fileContent);
     }
 
     private function isReadable(mixed $value): bool
