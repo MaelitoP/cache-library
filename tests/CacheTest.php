@@ -7,7 +7,7 @@ use Mention\Cache\File;
 use Mention\Cache\Memory;
 use Mention\Cache\CacheInterface;
 
-final class CacheTest extends TestCase
+class CacheTest extends TestCase
 {
     public function testMemoryCache()
     {

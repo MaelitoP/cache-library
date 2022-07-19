@@ -3,7 +3,7 @@ namespace Mention\Cache;
 
 use Mention\Cache\Utility\HashUtility;
 
-class Memory implements CacheInterface
+final class Memory implements CacheInterface
 {
     private static array $memory = [];
 

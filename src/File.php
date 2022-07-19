@@ -4,7 +4,7 @@ namespace Mention\Cache;
 use Mention\Cache\Utility\HashUtility;
 use Mention\Cache\Utility\Serializable;
 
-class File implements CacheInterface
+final class File implements CacheInterface
 {
     private const CACHE_FILE_PATH = '/tmp/%s.txt';
 

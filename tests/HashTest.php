@@ -4,7 +4,7 @@ namespace Mention\Cache\Tests;
 use PHPUnit\Framework\TestCase;
 use Mention\Cache\Utility\HashUtility;
 
-final class HashTest extends TestCase
+class HashTest extends TestCase
 {
     public function testHashFunction()
     {
