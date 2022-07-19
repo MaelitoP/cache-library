@@ -36,7 +36,7 @@ class File implements CacheInterface
             return NULL;
 
         $fileContent = file_get_contents($filePath);
-        return Serializable::encode($fileContent);
+        return Serializable::decode($fileContent);
     }
 
     private function isReadable(mixed $value): bool
